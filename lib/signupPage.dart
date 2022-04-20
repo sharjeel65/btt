@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'authentication.dart';
 
 class signup_page extends StatefulWidget {
-  const signup_page({Key? key}) : super(key: key);
-
+late String person;
+signup_page({required this.person});
   @override
   State<signup_page> createState() => _signup_pageState();
 }
@@ -357,15 +357,17 @@ class _signup_pageState extends State<signup_page> {
                     ],
                   ),
                   Row(
+                    //crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: null,
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(250, 10, 30, 0),
-                            height: 30,
-                            child: Text('Forgot Password ?'),
-                          ),
+                      GestureDetector(
+                        onTap: () async {
+                          await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailTextController.text);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          height: 30,
+                          child: Text('Forgot Password ?'),
                         ),
                       )
                     ],
@@ -373,10 +375,11 @@ class _signup_pageState extends State<signup_page> {
                   Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(200, 0, 150, 0),
-                          height: 30,
-                          child: Text('OR'),
+                        child: Center(
+                          child: Container(
+                            height: 30,
+                            child: Text('OR'),
+                          ),
                         ),
                       )
                     ],

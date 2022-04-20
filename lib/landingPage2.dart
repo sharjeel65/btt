@@ -1,22 +1,22 @@
 import 'package:btt/loginPage.dart';
 import 'package:btt/signupPage.dart';
 import 'package:flutter/material.dart';
-class landingPage extends StatefulWidget {
-  const landingPage({Key? key}) : super(key: key);
+
+class landingPage2 extends StatefulWidget {
+  late String person;
+
+  landingPage2({required this.person});
 
   @override
-  State<landingPage> createState() => _landingPageState();
+  State<landingPage2> createState() => _landingPage2State();
 }
 
-class _landingPageState extends State<landingPage> {
-  void _navigatetosignup(){
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => signup_page()));
+class _landingPage2State extends State<landingPage2> {
+  void initState() {
+    super.initState();
+    widget.person;
   }
-  void _navigatetologin(){
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => login_page()));
-  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,17 +24,17 @@ class _landingPageState extends State<landingPage> {
       width: double.infinity,
       decoration: BoxDecoration(
           gradient: LinearGradient(
-            stops: [
-              0.0097,
-              0.83,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFFf4d462),
-              Color(0xFFf58c24),
-            ],
-          )),
+        stops: [
+          0.0097,
+          0.83,
+        ],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Color(0xFFf4d462),
+          Color(0xFFf58c24),
+        ],
+      )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Column(
@@ -49,8 +49,8 @@ class _landingPageState extends State<landingPage> {
                       height: 120,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/images/1.png'),
-                          )),
+                        image: AssetImage('assets/images/1.png'),
+                      )),
                     ),
                   ),
                 ),
@@ -61,31 +61,26 @@ class _landingPageState extends State<landingPage> {
                 Expanded(
                   child: Center(
                     child: GestureDetector(
-                      onTap: _navigatetologin,
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => login_page(
+                                  person: widget.person,
+                                )));
+                      },
                       child: Container(
                         margin: EdgeInsets.only(top: 30),
                         width: 340,
                         height: 40,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
-                            border: Border.all(color: Colors.orange),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.orange,
-                                offset: const Offset(
-                                  1.0,
-                                  1.0,
-                                ),
-                                blurRadius: 0.5,
-                                spreadRadius: 0.2,
-                              ),
-                            ]),
+                          borderRadius: BorderRadius.circular(3),
+                          border: Border.all(color: Colors.white),
+                          color: Colors.transparent,
+                        ),
                         child: Center(
                           child: (Text(
                             'Login',
                             style: TextStyle(
-                              color: Colors.orange,
+                              color: Colors.white,
                             ),
                           )),
                         ),
@@ -100,7 +95,15 @@ class _landingPageState extends State<landingPage> {
                 Expanded(
                   child: Center(
                     child: GestureDetector(
-                      onTap: _navigatetosignup,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => signup_page(
+                              person: widget.person,
+                            ),
+                          ),
+                        );
+                      },
                       child: Container(
                         margin: EdgeInsets.only(top: 30),
                         width: 340,
@@ -123,7 +126,7 @@ class _landingPageState extends State<landingPage> {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

@@ -15,7 +15,7 @@ class _itemState extends State<item> {
       width: 90,
       height: 90,
       decoration: BoxDecoration(
-          color: Colors.orange.shade200,
+          color: Colors.white,
           border: Border.all(width: 2, color: Colors.brown),
           borderRadius: BorderRadius.circular(5),
           boxShadow: [

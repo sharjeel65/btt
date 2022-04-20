@@ -1,8 +1,7 @@
-import 'package:btt/landingPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'loginPage.dart';
+import 'landingPage1.dart';
 import 'package:lottie/lottie.dart';
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -31,7 +30,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           (value) => Future.delayed(const Duration(seconds: 1)).then(
             (value) => _lottieAnimation.forward().then(
               (value) => Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => landingPage()),
+              MaterialPageRoute(builder: (context) => landingPage1()),
                   (route) => false),
         ),
       ),
